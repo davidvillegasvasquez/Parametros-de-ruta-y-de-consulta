@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<title>Parámetros de ruta y consulta</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Link para el favicon: -->
+<link rel="icon" type="image/svg" href="">
+<!-- Link para css: -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+
+<body class="w3-container">
+  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:23%">
+      {% block barraLateral %}
+      <h3 class="w3-bar-item">Menu</h3>
+      <a href="{% url 'home' %}" class="w3-bar-item w3-button">Home</a>
+      <a href="" class="w3-bar-item w3-button">Parámetro de ruta</a>
+      <a href="" class="w3-bar-item w3-button">Parámetros de consulta con ruta constante</a>
+      <a href="{% url 'formParamRutaYconsulta' %}" class="w3-bar-item w3-button">Parámetros de consulta y ruta</a>
+  </div>
+      <!-- Fin del bloque barra lateral: -->  
+      {% endblock %}
+<!-- Bloque de contenido principal: -->
+  <div style="margin-left:25%">
+      <div class="w3-container w3-teal">
+      <h1>Ejemplos de parámetros de ruta y de consulta en etiquetas url</h1>
+  </div>
+      <!-- Bloque para sobreescribir en la plantilla heredera o hija -->
+      {% block content %}{% endblock %}
+      <!-- Fin división contenido principal -->
+  </div>
+    
+</body>
+</html>

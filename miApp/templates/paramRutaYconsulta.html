@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="w3-container">
+  <form class="w3-container" id="miFormulario" action="{% url 'paramRutaYconsulta' nombreparam=1 %}" method="get">
+    <input class="w3-input w3-border"
+      id="miInput1"
+      type="number"
+      name="parametroDeConsulta1"/>
+
+    <input class="w3-input w3-border"
+      id="miInput2"
+      type="number"
+      name="parametroDeConsultaN"/>
+  
+    <input class="w3-button" type="submit" value="Enviar" />
+
+  </form>
+</div>
+
+<script>
+    document.getElementById('miInput1').addEventListener('change', function() {
+        var nuevoPk = this.value;
+        var url = "{% url 'paramRutaYconsulta' nombreparam=1 %}".replace('1', nuevoPk); // Reemplaza el parámetro en la URL
+        document.getElementById('miFormulario').action = url;
+    });
+</script>
+{% endblock %}
