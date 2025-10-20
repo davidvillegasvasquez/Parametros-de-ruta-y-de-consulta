@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 """
 urlpatterns = [
@@ -20,5 +20,7 @@ Aquí podemos sustituir id=1, id=2 e id=3 como literales 1,2 y 3, respectivament
 
 urlpatterns = [
   	path('', views.vistaHome, name='home'),
-    path('envíoParamsRutaYdeConsulta/', views.formEnvioParamRutaYconsulta, name='formParamRutaYconsulta'), path('envioParamRutaYConsulta/<int:nombreparam>/', views.details_view, name='paramRutaYconsulta'),
+    path('formularioParamsRutaYConsulta/', views.formEnvioParamRutaYconsulta, name='formParamVariableRutaYconsulta'), path('resultadoEnvioParamRuta:/<int:parametroUnicoDeRuta>/YparametrosDeConsulta:/', views.vistaParamDeRutaYConsultaVariables, name='urlParamRutaYconsultaVariables'),
 ]
+
+#urlpatterns += [path('formularioParamsRutaYConsulta/', views.formEnvioParamRutaYconsulta, name='formParamRutaYconsulta'),]

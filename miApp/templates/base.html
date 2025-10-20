@@ -13,9 +13,10 @@
       {% block barraLateral %}
       <h3 class="w3-bar-item">Menu</h3>
       <a href="{% url 'home' %}" class="w3-bar-item w3-button">Home</a>
+      <a href="" class="w3-bar-item w3-button">Hipervínculos en plantilla con url de parámetros de ruta constante y consulta contantes.</a>
       <a href="" class="w3-bar-item w3-button">Parámetro de ruta</a>
-      <a href="" class="w3-bar-item w3-button">Parámetros de consulta con ruta constante</a>
-      <a href="{% url 'formParamRutaYconsulta' %}" class="w3-bar-item w3-button">Parámetros de consulta y ruta</a>
+      <a href="" class="w3-bar-item w3-button">Parámetros de consulta con parámetro de ruta constante</a>
+      <a href="{% url 'formParamVariableRutaYconsulta' %}" class="w3-bar-item w3-button">Parámetros de consulta y ruta</a>
   </div>
       <!-- Fin del bloque barra lateral: -->  
       {% endblock %}

@@ -20,15 +20,21 @@ def report_view(request, id):
     return render(request, 'display.html', context)
 """
 
-def details_view(request, nombreparam):
+def vistaParamDeRutaYConsultaVariables(request, parametroUnicoDeRuta):
+    #parametroDeRuta=request.GET.get('parametroDeRuta', 'Not provided')
     parametro1=request.GET.get('parametroDeConsulta1', 'Not provided')
     parametroN=request.GET.get('parametroDeConsultaN', 'Not provided')
-    context = {'idEnDetails': nombreparam, 'parametroConsulta1': parametro1, 'parametroConsultaN': parametroN, 'type': 'Details'}
-    return render(request, 'display.html', context)
+    parametroDelTipo=request.GET.get('tipo', 'Not provided')
+    context = {'parametroDeRuta': parametroUnicoDeRuta, 'parametroConsulta1': parametro1, 'parametroConsultaN': parametroN, 'tipoDado': parametroDelTipo}
+    return render(request, 'plantillaComunDeResultado.html', context)
 
 def formEnvioParamRutaYconsulta(request):
-  	return render(request, 'paramRutaYconsulta.html')
+  	return render(request, 'formularioParamRutaYconsultaVariables.html')
 
 def vistaHome(request):
   	return render(request, 'plantillaHome.html')
 
+"""
+Por que no puedo meter enteros negativos en el parametro de ruta url:
+El error ocurre porque el patrón de ruta (path) por defecto de Django no está configurado para reconocer el signo negativo (-) en los parámetros de la URL. Para solucionar esto, debes utilizar re_path con una expresión regular que acepte números negativos, o ajustar el parámetro de ruta a un tipo de dato que pueda ser negativo. 
+"""

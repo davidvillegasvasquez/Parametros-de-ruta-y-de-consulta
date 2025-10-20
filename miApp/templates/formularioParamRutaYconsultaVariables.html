@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="w3-panel w3-sand" style="width:50%; margin:auto;">
+ <div class="w3-card-4">
+  <div class="w3-panel w3-brown">
+    <h2>Datos</h2>
+  </div>
+  <form class="w3-container" id="miFormulario" action="{% url 'urlParamRutaYconsultaVariables' parametroUnicoDeRuta=1 %}" method="get">
+    <label class="w3-text-blue">Tipo de parámetro</label>
+    <select class="w3-select w3-border" id="miSeleccion" name= "tipo" onchange="this.value" style="width:50%">
+      <option value="" disabled selected>Escoje el ejemplo de parámetros</option>
+      <option type="text" value="valorRutaYconsultasVar">Parámetro de ruta y de consulta variable</option>
+      <option type="text" value="valorRutaConstConsulVar">Parámetro de ruta constante y de consulta variable</option>
+      <option type="text" value="valorRutaConstConsulConst">Parámetro de ruta constante y de consultas Constantes en enlaces fijos html</option>
+   
+    </select>
+
+    <label class="w3-text-blue">Parámetro de ruta</label>
+    <input class="w3-input w3-border"
+      id="id_inputParamRuta"
+      type="number"/>
+
+    <label class="w3-text-blue">Parámetro de consulta 1</label>
+    <input class="w3-input w3-border"
+      type="number"
+      name="parametroDeConsulta1"/>
+    
+    <label class="w3-text-blue">Parámetro de consulta N</label>
+    <input class="w3-input w3-border"
+      type="number"
+      name="parametroDeConsultaN"/>
+    <br>
+    <input class="w3-button" type="submit" value="Enviar" />
+    <br>
+  </form>
+ </div>
+ <br>
+</div>
+<br>
+<script>
+    document.getElementById('id_inputParamRuta').addEventListener('change', function() {
+        var nuevoPk = this.value;
+        var url = "{% url 'urlParamRutaYconsultaVariables' parametroUnicoDeRuta=1 %}".replace('1', nuevoPk); // Reemplaza el parámetro en la URL
+        document.getElementById('miFormulario').action = url;
+    });
+</script>
+{% endblock %}
