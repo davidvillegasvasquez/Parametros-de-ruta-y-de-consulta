@@ -29,7 +29,7 @@ def vistaParamDeRutaYConsultaVariables(request, parametroUnicoDeRuta):
     return render(request, 'plantillaComunDeResultado.html', context)
 
 def formEnvioParamRutaYconsulta(request):
-  	return render(request, 'formularioParamRutaYconsultaVariables.html')
+  	return render(request, 'formularioEnvio.html')
 
 def vistaHome(request):
   	return render(request, 'plantillaHome.html')

@@ -7,7 +7,7 @@
 <div class="w3-panel w3-sand" style="width:50%; margin:auto;">
 <div class="w3-card-4">
   <div class="w3-panel w3-brown">
-    <h2>Datos</h2>
+    <h2>Datos enviados desde formulario de envio</h2>
   </div>
   <form class="w3-container" method="get">
     <label class="w3-text-blue">Tipo de url</label>
@@ -15,7 +15,7 @@
       class="w3-input w3-border"
       type="text"
       value="{{ tipoDado }}"
-      style="width:80%">
+      style="width:80%" readonly>
     
     <label class="w3-text-blue">Url</label>
     <input
@@ -23,28 +23,28 @@
       class="w3-input w3-border"
       type="text"
       value="<script>window.location.href</script>"
-      style="width:80%">
+      style="width:80%" readonly>
 
     <label class="w3-text-blue">Parám de ruta</label>
     <input
       class="w3-input w3-border"
       type="text"
       value="{{ parametroDeRuta }}" 
-      style="width:30%">
+      style="width:30%" readonly>
 
     <label class="w3-text-blue">Parámetro de consulta 1</label>
     <input
       class="w3-input w3-border"
       type="text"
       value="{{ parametroConsulta1 }}"
-      style="width:30%">
+      style="width:30%" readonly>
 
     <label class="w3-text-blue">Parámetro de consulta N</label>
     <input
       class="w3-input w3-border"
       type="text"
       value="{{ parametroConsultaN }}"
-      style="width:30%">
+      style="width:30%" readonly>
     <br>
    </form>
 </div>

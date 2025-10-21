@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+ <div class="w3-card-4" style="width:70%; margin:auto">
+  <div class="w3-panel w3-brown">
+    <h2>Formulario de Envios</h2>
+  </div>
+  <form class="w3-container" id="miFormulario" action="{% url 'urlParamRutaYconsultaVariables' parametroUnicoDeRuta=1 %}" method="get">
+    <label class="w3-text-blue">Tipo de parámetro</label>
+    <select class="w3-select w3-border" id="miSeleccion" name= "tipo" onchange="visibilizarInputs(this)" style="width:80%">
+      <option value="" disabled selected>Escoje el ejemplo de parámetros</option>
+      <option type="text" value="valorRutaYconsultasVar">Parámetro de ruta y de consulta variable</option>
+      <option type="text" value="valorRutaConstConsulVar">Parámetro ruta constante y de consulta variable</option>
+      <option type="text" value="valorRutaConstConsulConst">Parám de ruta constante y de consultas Constantes en enlaces fijos html</option>
+    <br>
+    </select>
+    
+    <div id="divRuta" hidden>
+    <label class="w3-text-blue">Parámetro de ruta (sólo enteros positivos)</label>
+    <input class="w3-input w3-border"
+      id="id_inputRuta"
+      name="parametroDeRuta"
+      type="number"
+      style="width:25%"
+      min="0" step="1"/>
+    </div>
+
+    <div id="divConsulta1" style="display:none">
+    <label class="w3-text-blue" for="id_inputConsulta1">Parámetro de consulta 1 (enteros + y -)</label>
+    <input class="w3-input w3-border"
+      id="id_inputConsulta1"
+      type="number"
+      name="parametroDeConsulta1"
+      style="width:25%"/>
+    </div>
+
+    <div id="divConsultaN" style="display:none">
+    <label class="w3-text-blue" for="id_inputConsultaN">Parámetro de consulta N (cadenas)</label>
+    <input class="w3-input w3-border"
+      id="id_inputConsultaN"
+      type="text"
+      name="parametroDeConsultaN"
+      style="width:50%"/>
+    </div>
+
+    <input 
+      id="idBoton"
+      class="w3-button" 
+      type="submit" 
+      value="Enviar"/>
+    <br>
+  </form>
+  <p>Valor seleccionado en el select:<span id="id_piloto"></span></p>
+  <br>
+ </div>
+
+<script>
+    document.getElementById('id_inputRuta').addEventListener('change', function() {
+        var nuevoPk = this.value;
+        var url = "{% url 'urlParamRutaYconsultaVariables' parametroUnicoDeRuta=1 %}".replace('1', nuevoPk); // Reemplaza el parámetro en la URL
+        document.getElementById('miFormulario').action = url;
+    });
+
+function visibilizarInputs(selectElement) {
+  // Accede al elemento select a través del argumento `selectElement`
+  // `this` dentro de la función hace referencia al mismo elemento
+  document.getElementById("divRuta").style.display = 'none';
+  document.getElementById("divConsulta1").style.display = 'none';
+  document.getElementById("divConsultaN").style.display = 'none';
+  document.getElementById("idBoton").style.display = 'none';
+
+  var valorSeleccionado = selectElement.value;
+  
+  if (valorSeleccionado.localeCompare("valorRutaYconsultasVar") == 0) {
+  document.getElementById("divRuta").style.display = 'block';
+  document.getElementById("divConsulta1").style.display = 'block';
+  document.getElementById("divConsultaN").style.display = 'block';
+  document.getElementById("idBoton").style.display = 'block';
+  };
+
+  if (valorSeleccionado.localeCompare("valorRutaYconsultasVar") == 0) {
+  document.getElementById("divParamDeRutaYConsultaVariables").style.display = 'block';
+  document.getElementById("idBoton").style.display = 'block';
+  };
+
+  document.getElementById("id_piloto").innerHTML=valorSeleccionado;
+};
+</script>
+{% endblock %}
